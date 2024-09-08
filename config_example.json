@@ -1,0 +1,8 @@
+{
+  "api_key": "1234567890",
+  "api_secret": "abcdefghijklmnopq",
+  "opnsense_url": "https://10.1.1.253:443/api",
+  "ldap_url": "ldap://10.1.1.251:389",
+  "ldap_start": "cn=DHCPConfig,dc=pinguin,dc=lan",
+  "ldap_search": "(objectClass=dhcpHost)"
+}
