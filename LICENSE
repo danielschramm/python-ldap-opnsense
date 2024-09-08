@@ -1,3 +1,8 @@
+My code is under MIT.
+As it is dependant on other Python Libs, be careful on redistribution, it might need to be bundled under another OS license.
+
+========================
+
 MIT License
 
 Copyright (c) 2024 Daniel Schramm
