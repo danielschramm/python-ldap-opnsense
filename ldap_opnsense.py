@@ -15,13 +15,15 @@ def mac_to_string(mac):
 
 class MyLdapServer:
 
-    def __init__(self):
-        self.ldapServer = ldap.initialize(ldap_url)
-        self.searchResult = self.ldapServer.search_s(ldap_start, ldap.SCOPE_SUBTREE,ldap_search
+    def __init__(self, config_data):
+        self.conf=config_data
+        self.ldapServer = ldap.initialize(self.conf['ldap_url'])
+        self.searchResult = self.ldapServer.search_s(self.conf['ldap_start'], ldap.SCOPE_SUBTREE,self.conf['ldap_search']
                                                 , ['dhcpHost', 'mail'])
 
     def refresh_data(self):
-        self.searchResult = self.ldapServer.search_s('cn=DHCPConfig,dc=pinguin,dc=lan',ldap.SCOPE_SUBTREE,'(objectClass=dhcpHost)',['dhcpHost','mail'])
+        self.searchResult = self.ldapServer.search_s(self.conf['ldap_start'], ldap.SCOPE_SUBTREE,self.conf['ldap_search']
+                                                , ['dhcpHost', 'mail'])
 
 
     def get_arp_list_ldap(self):
@@ -57,8 +59,9 @@ class MyLdapServer:
         return neighbor
 
 class MyOpnSense:
-    def __init__(self):
-        self.neighbor = NeighborSettingsControllerClient(api_key, api_secret, opnsense_url)
+    def __init__(self, config_data):
+        self.conf=config_data
+        self.neighbor = NeighborSettingsControllerClient(self.conf['api_key'], self.conf['api_secret'], self.conf['opnsense_url'])
         self.neighbor_dict = self.neighbor.get()['neighbor']['neighbor']
 
     def refresh_data(self):
@@ -93,10 +96,10 @@ def main(config_data) -> int:
     """Echo the input arguments to standard output"""
 
     #pprint(get_arp_list_ldap())
-    ls=MyLdapServer()
+    ls=MyLdapServer(config_data)
     ldap_list=ls.get_arp_list_ldap()
 
-    ops=MyOpnSense()
+    ops=MyOpnSense(config_data)
     opnsense_list=ops.get_arp_list_opnsense()
 
     for e in ldap_list:
@@ -125,4 +128,5 @@ def main(config_data) -> int:
 if __name__ == '__main__':
     with open('config.json', 'r') as config_file:
         config_data = json.load(config_file)
+        pprint(config_data)
         sys.exit(main(config_data))  # next section explains the use of sys.exit
