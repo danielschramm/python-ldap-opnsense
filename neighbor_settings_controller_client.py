@@ -3,16 +3,7 @@ from pprint import pprint
 import requests
 from pyopnsense import client
 
-
 class NeighborSettingsControllerClient(client.OPNClient):
-    """A client for interacting with the interfaces/NeighborSettings endpoint.
-
-    :param str api_key: The API key to use for requests
-    :param str api_secret: The API secret to use for requests
-    :param str base_url: The base API endpoint for the OPNsense deployment
-    :param int timeout: The timeout in seconds for API requests
-    """
-
     def get(self):
         """Return the health list."""
         return self._get("interfaces/NeighborSettings/get")
