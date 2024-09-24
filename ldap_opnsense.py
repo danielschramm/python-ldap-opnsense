@@ -19,10 +19,11 @@ def main(config_dict) -> int:
     for e in ldap_list:
         if e in opnsense_list:
             print("found in list - do update check")
+            #TODO check it update needed
+            ops.update_host(e, ls.get_host_by_mac(e))
         else:
             print("not found in list - need to create")
             ops.add_host(ls.get_host_by_mac(e))
-
 
     for e in opnsense_list:
         if e in ldap_list:
@@ -35,7 +36,6 @@ def main(config_dict) -> int:
 
     #pprint(get_arp_list_opnsense())
     #print(opnsense_client.get_interfaces())
-
 
     return 0
 
