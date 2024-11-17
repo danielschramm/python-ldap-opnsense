@@ -160,15 +160,15 @@ class OpnSenseClientUnboundSettings(PyopnsenseJson):
 
 
 def test_connection(config_dict):
-    unbound = OpnSenseClientUnboundDiagnostics(
-        config_dict['api_key'], config_dict['api_secret'],
-        config_dict['opnsense_url'])
-    pprint(unbound.stats())
-    pprint(unbound.dumpcache())
-#    kea_agent = OpnSenseClientKeaCtrlAgent(
+#    unbound = OpnSenseClientUnboundDiagnostics(
 #        config_dict['api_key'], config_dict['api_secret'],
 #        config_dict['opnsense_url'])
-#    pprint(kea_agent.get())
+#    pprint(unbound.stats())
+#    pprint(unbound.dumpcache())
+    unbound_settings = OpnSenseClientUnboundSettings(
+        config_dict['api_key'], config_dict['api_secret'],
+        config_dict['opnsense_url'])
+    pprint(unbound_settings.searchHostOverride())
 #    kea_leases = OpnSenseClientKeaLeases4(
 #        config_dict['api_key'], config_dict['api_secret'],
 #        config_dict['opnsense_url'])
