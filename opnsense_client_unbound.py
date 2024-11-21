@@ -85,78 +85,77 @@ class OpnSenseClientUnboundSettings(PyopnsenseJson):
 
     def addAcl(self):
         # TODO: Check if payload needed
-        return self._post("Unbound/Service/addAcl", "")
+        return self._post("Unbound/Settings/addAcl", "")
 
     def addDomainOverride(self):
         # TODO: Check if payload needed
-        return self._post("Unbound/Service/addDomainOverride", "")
+        return self._post("Unbound/Settings/addDomainOverride", "")
 
     def addForward(self):
         # TODO: Check if payload needed
-        return self._post("Unbound/Service/addForward", "")
+        return self._post("Unbound/Settings/addForward", "")
 
     def addHostAlias(self):
         # TODO: Check if payload needed
-        return self._post("Unbound/Service/addHostAlias", "")
+        return self._post("Unbound/Settings/addHostAlias", "")
 
-    def addHostOverride(self):
-        # TODO: Check if payload needed
-        return self._post("Unbound/Service/addHostOverride", "")
+    def addHostOverride(self, override):
+        return self.post_json("unbound/Settings/addHostOverride/", override)
 
     def set(self):
         # TODO: Check if payload needed
-        return self._post("Unbound/Service/set", "")
+        return self._post("Unbound/Settings/set", "")
 
     def updateBlocklist(self):
         # TODO: Check if payload needed
-        return self._post("Unbound/Service/updateBlocklist", "")
+        return self._post("Unbound/Settings/updateBlocklist", "")
 
     def delAcl(self, uuid=""):
         #TODO: Check if payload needed
-        return self._post("Unbound/Service/delAcl/" + uuid, "")
+        return self._post("Unbound/Settings/delAcl/" + uuid, "")
     def delDomainOverride(self, uuid=""):
         #TODO: Check if payload needed
-        return self._post("Unbound/Service/delDomainOverride/" + uuid, "")
+        return self._post("Unbound/Settings/delDomainOverride/" + uuid, "")
     def delForward(self, uuid=""):
         #TODO: Check if payload needed
-        return self._post("Unbound/Service/delForward/" + uuid, "")
+        return self._post("Unbound/Settings/delForward/" + uuid, "")
     def delHostAlias(self, uuid=""):
         #TODO: Check if payload needed
-        return self._post("Unbound/Service/delHostAlias/" + uuid, "")
+        return self._post("Unbound/Settings/delHostAlias/" + uuid, "")
     def delHostOverride(self, uuid=""):
         #TODO: Check if payload needed
-        return self._post("Unbound/Service/delHostOverride/" + uuid, "")
+        return self._post("Unbound/Settings/delHostOverride/" + uuid, "")
     def setAcl(self, uuid=""):
         #TODO: Check if payload needed
-        return self._post("Unbound/Service/setAcl/" + uuid, "")
+        return self._post("Unbound/Settings/setAcl/" + uuid, "")
     def setDomainOverride(self, uuid=""):
         #TODO: Check if payload needed
-        return self._post("Unbound/Service/setDomainOverride/" + uuid, "")
+        return self._post("Unbound/Settings/setDomainOverride/" + uuid, "")
     def setForward(self, uuid=""):
         #TODO: Check if payload needed
-        return self._post("Unbound/Service/setForward/" + uuid, "")
+        return self._post("Unbound/Settings/setForward/" + uuid, "")
     def setHostAlias(self, uuid=""):
         #TODO: Check if payload needed
-        return self._post("Unbound/Service/setHostAlias/" + uuid, "")
+        return self._post("Unbound/Settings/setHostAlias/" + uuid, "")
     def setHostOverride(self, uuid=""):
         #TODO: Check if payload needed
-        return self._post("Unbound/Service/setHostOverride/" + uuid, "")
+        return self._post("Unbound/Settings/setHostOverride/" + uuid, "")
 
     def toggleAcl(self, uuid="", enabled=""):
         # TODO: Check if payload needed
-        return self._post("Unbound/Service/toggleAcl/" + uuid + "/" + enabled, "")
+        return self._post("Unbound/Settings/toggleAcl/" + uuid + "/" + enabled, "")
     def toggleDomainOverride(self, uuid="", enabled=""):
         # TODO: Check if payload needed
-        return self._post("Unbound/Service/toggleDomainOverride/" + uuid + "/" + enabled, "")
+        return self._post("Unbound/Settings/toggleDomainOverride/" + uuid + "/" + enabled, "")
     def toggleForward(self, uuid="", enabled=""):
         # TODO: Check if payload needed
-        return self._post("Unbound/Service/toggleForward/" + uuid + "/" + enabled, "")
+        return self._post("Unbound/Settings/toggleForward/" + uuid + "/" + enabled, "")
     def toggleHostAlias(self, uuid="", enabled=""):
         # TODO: Check if payload needed
-        return self._post("Unbound/Service/toggleHostAlias/" + uuid + "/" + enabled, "")
+        return self._post("Unbound/Settings/toggleHostAlias/" + uuid + "/" + enabled, "")
     def toggleHostOverride(self, uuid="", enabled=""):
         # TODO: Check if payload needed
-        return self._post("Unbound/Service/toggleHostOverride/" + uuid + "/" + enabled, "")
+        return self._post("Unbound/Settings/toggleHostOverride/" + uuid + "/" + enabled, "")
 
 
 def test_connection(config_dict):

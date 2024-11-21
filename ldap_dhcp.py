@@ -11,7 +11,7 @@ def main(config_dict) -> int:
 
     #pprint(get_arp_list_ldap())
     ls= LdapServerConnection(config_dict)
-    ldap_list=ls.get_arp_list_ldap()
+    ldap_list=ls.get_hosts_list()
 
     #ops= OpnSenseConnection(config_dict)
     #opnsense_list=ops.get_arp_list_opnsense()
