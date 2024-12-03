@@ -80,7 +80,7 @@ class LdapServerConnection:
             except:
                 pass
             try:
-                host['associatedDomain']=entry['attributes']['associatedDomain'][0]
+                host['associatedDomains']=entry['attributes']['associatedDomain']
             except:
                 pass
             try:
