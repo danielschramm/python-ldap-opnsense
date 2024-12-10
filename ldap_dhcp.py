@@ -11,13 +11,17 @@ def main(config_dict) -> int:
 
     #pprint(get_arp_list_ldap())
     ls= LdapServerConnection(config_dict)
-    ldap_list=ls.get_hosts_list()
+    #ldap_list=ls.get_hosts_list()
+    dhcp_ranges = ls.get_dhcp_dn_list()
+    pprint(dhcp_ranges)
+    for d in dhcp_ranges:
+        pprint(ls.get_dhcp_config(d))
 
     #ops= OpnSenseConnection(config_dict)
     #opnsense_list=ops.get_arp_list_opnsense()
 
-    for e in ldap_list:
-        pprint(e)
+    #for e in ldap_list:
+    #    pprint(e)
 #        if e in opnsense_list:
 #            print("found in list - do update check")
 #            #TODO check it update needed

@@ -17,13 +17,13 @@ class LdapServerConnection:
         #self.searchResult = self.ldapServer.search_s(self.conf['ldap_start'], ldap.SCOPE_SUBTREE,self.conf['ldap_search']
         #                                        , ['dhcpHost', 'mail'])
 
-        conn = Connection(server, self.conf['ldap_user'], self.conf['ldap_passwd'])
+        self.conn = Connection(server, self.conf['ldap_user'], self.conf['ldap_passwd'])
         #conn = Connection(server)
-        conn.bind()
+        self.conn.bind()
         #status, result, response, _ = conn.search(self.conf['ldap_start'], self.conf['ldap_search'])
-        conn.search(self.conf['ldap_start'], self.conf['ldap_search'],search_scope=SUBTREE, attributes=['cn','dhcpHWAddress','dhcpStatements','associatedDomain','aRecord'])
+        self.conn.search(self.conf['ldap_start'], self.conf['ldap_search'],search_scope=SUBTREE, attributes=['cn','dhcpHWAddress','dhcpStatements','associatedDomain','aRecord'])
         #pprint (conn.response)
-        self.searchResult=conn.response
+        self.searchResult=self.conn.response
 
     #def refresh_data(self):
         #self.searchResult = self.ldapServer.search_s(self.conf['ldap_start'], ldap.SCOPE_SUBTREE,self.conf['ldap_search']
@@ -98,3 +98,12 @@ class LdapServerConnection:
                 pass
             hosts_list.append(host)
         return hosts_list
+
+    def get_dhcp_dn_list(self):
+        return self.conf['ldap_dhcp_config_dn_list']
+
+    def get_dhcp_config(self, config_dn):
+        self.conn.search(config_dn, "(objectClass=dhcpOptions)", search_scope=SUBTREE,
+                         attributes=['cn', 'dhcpNetMask', 'dhcpStatements', 'dhcpOption', 'dhcpRange', 'dhcpHostDN'])
+        return self.conn.response[0]['attributes']
+
