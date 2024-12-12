@@ -17,7 +17,7 @@ def main(config_dict) -> int:
     for d in dhcp_ranges:
         pprint(ls.get_dhcp_config(d))
 
-    #ops= OpnSenseConnection(config_dict)
+    ops= OpnSenseConnection(config_dict)
     #opnsense_list=ops.get_arp_list_opnsense()
 
     #for e in ldap_list:
