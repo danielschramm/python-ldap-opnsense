@@ -49,14 +49,14 @@ def test_connection(config_dict):
         config_dict['api_key'], config_dict['api_secret'],
         config_dict['opnsense_url'])
     #pprint(kea.get())
-    #pprint(kea.search_subnet())
-    reservation = {
+    pprint(kea.search_subnet())
+    reservation = {'reservation': {
         'description': 'huhu desc',
-        'hostname': 'huhu',
+        'hostname': 'huhuhu',
         'hw_address': 'bb:aa:aa:aa:aa:aa',
         'ip_address': '172.20.0.2',
-        'subnet': '172.20.0.0/24'
-    }
+        'subnet': 'b04ba618-3398-467c-a766-a009c21ce3d5'
+    }}
     kea.add_reservation(reservation)
     pprint(kea.search_reservation())
     #pprint(kea.get_subnet("b04ba618-3398-467c-a766-a009c21ce3d5"))
