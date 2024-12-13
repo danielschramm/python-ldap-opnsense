@@ -107,3 +107,9 @@ class LdapServerConnection:
                          attributes=['cn', 'dhcpNetMask', 'dhcpStatements', 'dhcpOption', 'dhcpRange', 'dhcpHostDN'])
         return self.conn.response[0]['attributes']
 
+    def get_dhcp_hosts_subnet(self, subnet_dn):
+        self.conn.search(subnet_dn, "(objectClass=dhcpHost)", search_scope=SUBTREE,
+                         attributes=['cn', 'associatedDomain', 'aRecord', 'dhcpHWAddress', 'dhcpStatements', 'dhcpHostDN'])
+        return self.conn.response
+
+
