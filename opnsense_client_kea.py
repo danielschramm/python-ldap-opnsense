@@ -12,7 +12,7 @@ class OpnSenseClientKeaCtrlAgent(PyopnsenseJson):
         return self._get("kea/CtrlAgent/get")
 
 class OpnSenseClientKeaDhcpv4(PyopnsenseJson):
-#TODO addPeer addReservation  delPeer($uuid) delReservation($uuid)
+#TODO addPeer addReservation  delPeer($uuid)
 # delSubnet($uuid) downloadReservations getPeer($uuid=null) getReservation($uuid=null)
 # searchPeer searchReservation  set setPeer($uuid)
 # setReservation($uuid) setSubnet($uuid) uploadReservations
@@ -30,6 +30,9 @@ class OpnSenseClientKeaDhcpv4(PyopnsenseJson):
         return self.post_json("kea/Dhcpv4/addSubnet/",subnet)
     def upload_reservations(self, reservations):
         return self.post_json("kea/Dhcpv4/uploadReservations/",reservations)
+    def del_reservation(self, uuid=""):
+        return self.post_json("kea/Dhcpv4/delReservation/" + uuid,"")
+
 
 class OpnSenseClientKeaLeases4(PyopnsenseJson):
     # complete.

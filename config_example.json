@@ -3,6 +3,10 @@
   "api_secret": "abcdefghijklmnopq",
   "opnsense_url": "https://10.1.1.253:443/api",
   "ldap_url": "ldap://10.1.1.251:389",
-  "ldap_start": "cn=DHCPConfig,dc=pinguin,dc=lan",
-  "ldap_search": "(objectClass=dhcpHost)"
+  "ldap_start": "cn=DHCPConfig,dc=mynet,dc=lan",
+  "ldap_search": "(objectClass=dhcpHost)",
+  "ldap_user": "cn=admin,dc=mynet,dc=lan",
+  "ldap_passwd": "mypassword",
+  "ldap_dhcp_config_dn_list": ["cn=10.1.1.0,cn=Subnet1,dc=mynet,dc=lan", "cn=10.1.2.0,cn=Subnet2,dc=mynet,dc=lan"]
 }
+
